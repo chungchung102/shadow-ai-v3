@@ -18,7 +18,7 @@ interface UseSTTOptions {
 export function useSTT({ language, onResult, onError }: UseSTTOptions) {
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(false);
-  const recogRef = useRef<SpeechRecognition | null>(null);
+  const recogRef = useRef<any>(null);
 
   useEffect(() => {
     const SpeechRecognition =

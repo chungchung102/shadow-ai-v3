@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand colors */
+  --c-bg:        #0f0e17;
+  --c-surface:   #1a1827;
+  --c-card:      #221f35;
+  --c-border:    #2e2a45;
+
+  --c-purple:    #a78bfa;
+  --c-purple-d:  #7c3aed;
+  --c-pink:      #f472b6;
+  --c-teal:      #2dd4bf;
+  --c-yellow:    #fbbf24;
+  --c-green:     #4ade80;
+  --c-red:       #f87171;
+
+  --c-text:      #f0eeff;
+  --c-muted:     #8b87a8;
+  --c-dim:       #4a4668;
+
+  --radius:      16px;
+  --font-main:   'Nunito', sans-serif;
+  --font-jp:     'Noto Sans JP', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 99px; }
+
+/* Glow utilities */
+.glow-purple { box-shadow: 0 0 24px rgba(167,139,250,0.25); }
+.glow-teal   { box-shadow: 0 0 24px rgba(45,212,191,0.25); }
+.glow-pink   { box-shadow: 0 0 20px rgba(244,114,182,0.2); }
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(135deg, var(--c-purple), var(--c-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-teal {
+  background: linear-gradient(135deg, var(--c-teal), var(--c-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bounce dots */
+@keyframes bounce-dot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40%           { transform: translateY(-6px); opacity: 1; }
+}
+.dot-1 { animation: bounce-dot 1.2s infinite 0ms; }
+.dot-2 { animation: bounce-dot 1.2s infinite 150ms; }
+.dot-3 { animation: bounce-dot 1.2s infinite 300ms; }
+
+/* Pulse ring for mic */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.mic-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--c-red);
+  animation: pulse-ring 1s ease-out infinite;
+  z-index: -1;
+}
+
+/* Fade in */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.3s ease forwards; }
+
+/* Score ring animation */
+@keyframes draw-ring {
+  from { stroke-dashoffset: 251; }
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

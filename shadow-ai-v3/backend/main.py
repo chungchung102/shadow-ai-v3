@@ -10,12 +10,11 @@ from routes.shadowing import router as shadowing_router
 
 app = FastAPI(title="Shadow AI v0.3")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://shadow-ai-v3-frontend-v3.vercel.app",
-    ],
+allow_origins=[
+    "http://localhost:3000",
+    "https://shadow-ai-v3-frontend-v3.vercel.app",
+    "https://shadow-ai-v3-frontend-v3-mazm53sr4-chungchung102s-projects.vercel.app",
+]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -10,11 +10,13 @@ from routes.shadowing import router as shadowing_router
 
 app = FastAPI(title="Shadow AI v0.3")
 
-allow_origins=[
-    "http://localhost:3000",
-    "https://shadow-ai-v3-frontend-v3.vercel.app",
-    "https://shadow-ai-v3-frontend-v3-mazm53sr4-chungchung102s-projects.vercel.app",
-]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "https://shadow-ai-v3-frontend-v3.vercel.app",
+        "https://shadow-ai-v3-frontend-v3-mazm53sr4-chungchung102s-projects.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,6 +24,7 @@ allow_origins=[
 
 app.include_router(chat_router, prefix="/api")
 app.include_router(shadowing_router, prefix="/api")
+
 
 @app.get("/health")
 def health():
